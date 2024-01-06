@@ -1,0 +1,9 @@
+.env.local
+node_modules
+package-lock.json
+.cache
+.vscode
+.DS_Store
+.idea
+.next
+dist
