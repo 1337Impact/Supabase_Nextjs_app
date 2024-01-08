@@ -11,7 +11,7 @@ export default async function RootLayout({ children }: React.PropsWithChildren) 
 
         {children}
 
-        <Script src={`https://www.googletagmanager.com/gtag/js?id=${env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`} />
+        {/* <Script src={`https://www.googletagmanager.com/gtag/js?id=${env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`} />
         <Script id="google-analytics">
           {`
           window.dataLayer = window.dataLayer || [];
@@ -20,7 +20,7 @@ export default async function RootLayout({ children }: React.PropsWithChildren) 
  
           gtag('config', '${env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
         `}
-        </Script>
+        </Script> */}
 
       </body>
     </html>
