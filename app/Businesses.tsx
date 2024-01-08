@@ -17,7 +17,7 @@ export default function Businesses({ businesses }: { businesses: Business[] }) {
       .select()
       .then((res) => {
         const { data, error } = res;
-        setData(data!);
+        setData(data!.reverse());
       });
   }, [user]);
 

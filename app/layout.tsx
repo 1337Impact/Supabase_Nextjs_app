@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning={true}
-        className={`${inter.className} bg-gray-800`}
+        className={`${inter.className} bg-gray-800 max-w-[1200px] mx-auto`}
       >
         <UserProvider>
           <Navbar />
