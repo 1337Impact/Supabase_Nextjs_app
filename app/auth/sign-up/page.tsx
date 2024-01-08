@@ -12,21 +12,23 @@ type FormData = {
 
 export default function SignUpPage() {
   const router = useRouter();
+
   function handleSubmit(event: any) {
     event.preventDefault();
+
     const formData: FormData = {
       full_name: event.target.full_name.value,
       email: event.target.email.value,
       password: event.target.password.value,
     };
-    signupUsingPassword(formData).then(res => {
-        console.log(res);
-        if (res.error) {
-          toast.error(res.error.message);
-          return;
-        }
-        toast.success("We've sent you an email to confirm your account!");
-        router.push("/");
+
+    signupUsingPassword(formData).then((res) => {
+      if (res.error) {
+        toast.error(res.error.message);
+        return;
+      }
+      toast.success("We've sent you an email to confirm your account!");
+      router.push("/auth/login");
     });
   }
 
@@ -72,7 +74,12 @@ export default function SignUpPage() {
           </button>
         </div>
       </form>
-      <Link className="text-sm text-gray-300 mt-2 underline" href={"/auth/login"}>Login</Link>
+      <Link
+        className="text-sm text-gray-300 mt-2 underline"
+        href={"/auth/login"}
+      >
+        Login
+      </Link>
     </main>
   );
 }

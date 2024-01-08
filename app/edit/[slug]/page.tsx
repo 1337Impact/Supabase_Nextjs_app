@@ -1,5 +1,6 @@
 "use client";
 import { supabaseForClientComponent as supabase } from "@/lib/supabase.client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -8,6 +9,7 @@ export default function Edit({ params }: { params: { slug: string } }) {
   const router = useRouter();
 
   const [name, setName] = useState("");
+
   useEffect(() => {
     supabase
       .from("businesses")
@@ -38,7 +40,9 @@ export default function Edit({ params }: { params: { slug: string } }) {
         console.log(res);
         router.push("/");
       });
+      event.target.reset();
   }
+
   function deleteBusiness() {
     supabase
     .from("businesses")
@@ -74,12 +78,13 @@ export default function Edit({ params }: { params: { slug: string } }) {
           />
         </div>
         <div className="w-full flex justify-between">
-          <button
-            onClick={() => router.push("/")}
-            className="border-2 border-gray-800 text-gray-700 rounded-md bg-green-400 w-[100px] py-1"
+          <Link
+            href={"/"}
+            className="border-2 border-gray-800 text-gray-700 rounded-md bg-green-400 w-[100px] py-1  text-center
+            "
           >
             Cancel
-          </button>
+          </Link>
           <button
             onClick={deleteBusiness}
             className="border-2 border-gray-800 text-gray-700 rounded-md bg-red-400 w-[100px] py-1"
