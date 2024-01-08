@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import Navbar from "@/app/Navbar";
 import { ToastContainer } from "react-toastify";
+import { UserProvider } from "./UserContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,9 +24,11 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={`${inter.className} bg-gray-800`}
       >
-        <Navbar />
-        {children}
-        <ToastContainer />
+        <UserProvider>
+          <Navbar />
+          {children}
+          <ToastContainer />
+        </UserProvider>
       </body>
     </html>
   );

@@ -3,6 +3,8 @@ import { authenticateUsingPassword } from "@/lib/supabase.auth.client";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { SessionToUse, UpdateUserContext } from "@/app/UserContext";
 
 type FormData = {
   email: string;
@@ -11,20 +13,27 @@ type FormData = {
 
 export default function SignUpPage() {
   const router = useRouter();
+  const UpdateUser = useContext(UpdateUserContext);
+
   function handleSubmit(event: any) {
     event.preventDefault();
     const formData: FormData = {
       email: event.target.email.value,
       password: event.target.password.value,
     };
+
     authenticateUsingPassword(formData).then((res) => {
       if (res.error) {
         toast.error(res.error.message);
         return;
       }
       toast.success("Welcom back :)");
+      if (res.data.session) {
+        UpdateUser!(SessionToUse(res.data.session));
+      }
       router.push("/");
     });
+
     event.target.reset();
   }
 

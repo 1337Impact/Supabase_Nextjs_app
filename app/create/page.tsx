@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { supabaseForClientComponent as supabase } from "@/lib/supabase.client";
 import { toast } from "react-toastify";
+import Link from "next/link";
 
 export default function Edit() {
   const router = useRouter();
@@ -46,12 +47,12 @@ export default function Edit() {
           />
         </div>
         <div className="w-full flex justify-between">
-          <button
-            onClick={() => router.push("/")}
-            className="border-2 border-gray-800 text-gray-700 rounded-md bg-red-400 w-[100px] py-1"
+          <Link
+            href="/"
+            className="border-2 border-gray-800 text-gray-700 rounded-md bg-red-400 w-[100px] py-1 text-center"
           >
             Cancel
-          </button>
+          </Link>
           <button
             type="submit"
             className="border-2 border-gray-800 text-gray-700 rounded-md bg-white w-[100px] py-1"
