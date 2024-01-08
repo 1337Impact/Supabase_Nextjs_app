@@ -86,6 +86,7 @@ export default function Edit({ params }: { params: { slug: string } }) {
             Cancel
           </Link>
           <button
+            type="button"
             onClick={deleteBusiness}
             className="border-2 border-gray-800 text-gray-700 rounded-md bg-red-400 w-[100px] py-1"
           >
